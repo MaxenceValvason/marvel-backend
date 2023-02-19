@@ -60,6 +60,12 @@ app.all("*", (req, res) => {
   res.status(400).json({ message: "this routes doesnt exist" });
 });
 
-app.listen(4000, () => {
-  console.log("Server has started");
-});
+if (process.env.PORT) {
+  app.listen(process.env.PORT, () => {
+    console.log("Server has started");
+  });
+} else {
+  app.listen(4000, () => {
+    console.log("Server started");
+  });
+}
