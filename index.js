@@ -48,6 +48,14 @@ app.get("/comics/:id", async (req, res) => {
   }
 });
 
+app.get("/", (req, res) => {
+  try {
+    res.json({ message: "Welcome" });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
 app.all("*", (req, res) => {
   res.status(400).json({ message: "this routes doesnt exist" });
 });
